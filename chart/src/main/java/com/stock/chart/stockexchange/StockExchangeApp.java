@@ -1,4 +1,4 @@
 package com.stock.chart.stockexchange;
 
-public class StockExchangeService {
+public class StockExchangeApp {
 }

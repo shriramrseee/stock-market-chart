@@ -1,4 +1,4 @@
 package com.stock.chart.company;
 
-public class CompanyService {
+public class CompanyApp {
 }

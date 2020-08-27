@@ -1,4 +1,4 @@
 package com.stock.chart.price;
 
-public class PriceService {
+public class PriceApp {
 }

@@ -6,10 +6,10 @@ import org.springframework.context.annotation.PropertySource;
 
 @SpringBootApplication
 @PropertySource("sector.properties")
-public class SectorService {
+public class SectorApp {
 
     public static void main(String[] args) {
-        SpringApplication.run(SectorService.class, args);
+        SpringApplication.run(SectorApp.class, args);
     }
 
 }
