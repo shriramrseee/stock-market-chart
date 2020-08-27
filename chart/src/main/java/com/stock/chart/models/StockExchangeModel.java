@@ -5,14 +5,23 @@ public class StockExchangeModel {
     private Integer id;
     private String brief;
     private String remarks;
-    //private ContactModel contactModel;
+    private ContactModel contactModel;
 
     public StockExchangeModel() {}
 
-    public StockExchangeModel(Integer id, String brief, String remarks) {
+    public StockExchangeModel(Integer id, String brief, String remarks, ContactModel contactModel) {
         this.id = id;
         this.brief = brief;
         this.remarks = remarks;
+        this.contactModel = contactModel;
+    }
+
+    public ContactModel getContactModel() {
+        return contactModel;
+    }
+
+    public void setContactModel(ContactModel contactModel) {
+        this.contactModel = contactModel;
     }
 
     public Integer getId() {

@@ -11,8 +11,17 @@ public class StockExchange {
     private String brief;
     private String remarks;
 
-    //@OneToOne
-    //private Contact contact;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "contact_id", nullable = false)
+    private Contact contact;
+
+    public Contact getContact() {
+        return contact;
+    }
+
+    public void setContact(Contact contact) {
+        this.contact = contact;
+    }
 
     public StockExchange() {}
 
