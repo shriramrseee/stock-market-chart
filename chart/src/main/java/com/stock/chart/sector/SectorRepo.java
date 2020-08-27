@@ -1,6 +1,6 @@
 package com.stock.chart.sector;
 
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface SectorRepo extends CrudRepository<Sector, Integer> {
+public interface SectorRepo extends JpaRepository<Sector, Integer> {
 }
