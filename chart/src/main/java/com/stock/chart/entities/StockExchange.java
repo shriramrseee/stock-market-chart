@@ -1,7 +1,7 @@
 package com.stock.chart.entities;
 
 import javax.persistence.*;
-import java.util.List;
+import java.util.Set;
 
 @Entity
 public class StockExchange {
@@ -18,10 +18,15 @@ public class StockExchange {
     private Contact contact;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "stockExchange")
-    private List<Stock> stocks;
+    private Set<Stock> stocks;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "stockExchange")
-    private List<Company> companies;
+    @ManyToMany
+    @JoinTable(
+            name = "stock_exchange_companies",
+            joinColumns = @JoinColumn(name = "stock_exchange_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "company_id", referencedColumnName = "id")
+    )
+    private Set<Company> companies;
 
     public Contact getContact() {
         return contact;
@@ -55,19 +60,19 @@ public class StockExchange {
         this.remarks = remarks;
     }
 
-    public List<Stock> getStocks() {
+    public Set<Stock> getStocks() {
         return stocks;
     }
 
-    public void setStocks(List<Stock> stocks) {
+    public void setStocks(Set<Stock> stocks) {
         this.stocks = stocks;
     }
 
-    public List<Company> getCompanies() {
+    public Set<Company> getCompanies() {
         return companies;
     }
 
-    public void setCompanies(List<Company> companies) {
+    public void setCompanies(Set<Company> companies) {
         this.companies = companies;
     }
 }

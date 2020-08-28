@@ -18,8 +18,8 @@ public class IPO {
     private Double price;
     private Integer count;
 
-    @OneToOne
-    @JoinColumn(name = "company_id", nullable = false)
+    @ManyToOne
+    @JoinColumn(name = "company_id", nullable = false, referencedColumnName = "id")
     private Company company;
 
     public Integer getId() {

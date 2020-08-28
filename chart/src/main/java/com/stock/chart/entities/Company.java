@@ -1,7 +1,7 @@
 package com.stock.chart.entities;
 
 import javax.persistence.*;
-import java.util.List;
+import java.util.Set;
 
 @Entity
 public class Company {
@@ -18,18 +18,17 @@ public class Company {
     @JoinColumn(name = "sector_id", nullable = false)
     private Sector sector;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "stock_exchange_id", nullable = false)
-    private StockExchange stockExchange;
+    @ManyToMany(mappedBy = "companies")
+    private Set<StockExchange> stockExchanges;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "company")
-    private List<Stock> stocks;
+    @OneToMany(mappedBy = "company")
+    private Set<Stock> stocks;
 
     @OneToOne(cascade = CascadeType.ALL)
     private BoardOfDirectors boardOfDirectors;
 
-    @OneToOne(mappedBy = "company")
-    private IPO ipo;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "company")
+    private Set<IPO> ipos;
 
     public BoardOfDirectors getBoardOfDirectors() {
         return boardOfDirectors;
@@ -79,27 +78,27 @@ public class Company {
         this.sector = sector;
     }
 
-    public StockExchange getStockExchange() {
-        return stockExchange;
-    }
-
-    public void setStockExchange(StockExchange stockExchange) {
-        this.stockExchange = stockExchange;
-    }
-
-    public List<Stock> getStocks() {
+    public Set<Stock> getStocks() {
         return stocks;
     }
 
-    public void setStocks(List<Stock> stocks) {
+    public void setStocks(Set<Stock> stocks) {
         this.stocks = stocks;
     }
 
-    public IPO getIpo() {
-        return ipo;
+    public Set<IPO> getIpos() {
+        return ipos;
     }
 
-    public void setIpo(IPO ipo) {
-        this.ipo = ipo;
+    public void setIpos(Set<IPO> ipos) {
+        this.ipos = ipos;
+    }
+
+    public Set<StockExchange> getStockExchanges() {
+        return stockExchanges;
+    }
+
+    public void setStockExchanges(Set<StockExchange> stockExchanges) {
+        this.stockExchanges = stockExchanges;
     }
 }
