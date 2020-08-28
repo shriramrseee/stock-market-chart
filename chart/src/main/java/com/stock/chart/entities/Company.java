@@ -10,13 +10,13 @@ import java.util.*;
 public class Company {
 
 	@javax.persistence.Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private String ceo;
 	private String brief;
 	private String name;
 	private Integer sector_id;
-	@OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
+	@OneToOne(cascade = CascadeType.ALL)
 	private BoardOfDirectors boardOfDirectors;
 
 
