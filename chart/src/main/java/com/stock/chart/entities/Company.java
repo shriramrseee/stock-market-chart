@@ -30,6 +30,20 @@ public class Company {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "company")
     private Set<IPO> ipos;
 
+    public Company(Integer id, String ceo, String brief, String name, Sector sector, Set<StockExchange> stockExchanges, Set<Stock> stocks, BoardOfDirectors boardOfDirectors, Set<IPO> ipos) {
+        this.id = id;
+        this.ceo = ceo;
+        this.brief = brief;
+        this.name = name;
+        this.sector = sector;
+        this.stockExchanges = stockExchanges;
+        this.stocks = stocks;
+        this.boardOfDirectors = boardOfDirectors;
+        this.ipos = ipos;
+    }
+
+    public Company(){}
+
     public BoardOfDirectors getBoardOfDirectors() {
         return boardOfDirectors;
     }
