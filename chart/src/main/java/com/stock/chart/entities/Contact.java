@@ -1,10 +1,15 @@
 package com.stock.chart.entities;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import javax.persistence.*;
 
 @Entity
+@JsonIdentityInfo(
+        generator = ObjectIdGenerators.PropertyGenerator.class,
+        property = "id")
 public class Contact {
 
     @Id
@@ -68,7 +73,6 @@ public class Contact {
         this.zip = zip;
     }
 
-    @JsonIgnore
     public StockExchange getStockExchange() {
         return stockExchange;
     }
