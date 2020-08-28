@@ -23,4 +23,14 @@ public class SectorController {
     public List<Sector> getAllSectors() {
         return sectorService.getAllSectors();
     }
+
+    @PutMapping("/update")
+    public void updateSector(@RequestBody Sector Sector) {
+        sectorService.updateSector(Sector);
+    }
+
+    @DeleteMapping("/delete/{id}")
+    public void deleteSector(@PathVariable Integer id){
+        sectorService.deleteSector(id);
+    }
 }

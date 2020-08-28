@@ -23,4 +23,14 @@ public class ContactController {
     public List<Contact> getAllContacts() {
         return contactService.getAllContacts();
     }
+
+    @PutMapping("/update")
+    public void updateContact(@RequestBody Contact Contact) {
+        contactService.updateContact(Contact);
+    }
+
+    @DeleteMapping("/delete/{id}")
+    public void deleteContact(@PathVariable Integer id){
+        contactService.deleteContact(id);
+    }
 }

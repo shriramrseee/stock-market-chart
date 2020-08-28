@@ -21,4 +21,12 @@ public class SectorService {
     public void addSector(Sector sector) {
         sectorRepo.save(sector);
     }
+
+    public void updateSector(Sector Sector) {
+        sectorRepo.save(Sector);
+    }
+
+    public void deleteSector(Integer id) {
+        sectorRepo.deleteById(id);
+    }
 }

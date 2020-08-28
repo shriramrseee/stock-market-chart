@@ -21,4 +21,12 @@ public class ContactService {
     public void addContact(Contact contact) {
         contactRepo.save(contact);
     }
+
+    public void updateContact(Contact Contact) {
+        contactRepo.save(Contact);
+    }
+
+    public void deleteContact(Integer id) {
+        contactRepo.deleteById(id);
+    }
 }
