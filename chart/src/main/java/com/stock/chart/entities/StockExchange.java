@@ -1,6 +1,7 @@
 package com.stock.chart.entities;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 public class StockExchange {
@@ -14,6 +15,22 @@ public class StockExchange {
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "contact_id", nullable = false)
     private Contact contact;
+
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "stock_exchange_companies",
+            joinColumns = @JoinColumn(name = "stock_exchange_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "company_id", referencedColumnName = "id")
+    )
+    private Set<Company> companies;
+
+    public Set<Company> getCompanies() {
+        return companies;
+    }
+
+    public void setCompanies(Set<Company> companies) {
+        this.companies = companies;
+    }
 
     public Contact getContact() {
         return contact;
