@@ -1,30 +1,26 @@
 package com.stock.chart.controllers;
 
 import com.stock.chart.entities.Sector;
-import com.stock.chart.repos.SectorRepo;
+import com.stock.chart.services.SectorService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-@Controller
+import java.util.List;
+
+@RestController
 @RequestMapping(path = "/sector")
 public class SectorController {
 
     @Autowired
-    private SectorRepo sectorRepo;
+    private SectorService sectorService;
 
-    @PostMapping(path="/add")
-    public @ResponseBody
-    String addNewUser (@RequestParam String name, @RequestParam String brief) {
-        Sector s = new Sector();
-        s.setName(name);
-        s.setBrief(brief);
-        sectorRepo.save(s);
-        return "Saved";
+    @PostMapping("/add")
+    public void addSector(@RequestBody Sector sector) {
+        sectorService.addSector(sector);
     }
 
-    @GetMapping(path="/all")
-    public @ResponseBody Iterable<Sector> getAllSectors() {
-        return sectorRepo.findAll();
+    @GetMapping("/all")
+    public List<Sector> getAllSectors() {
+        return sectorService.getAllSectors();
     }
 }

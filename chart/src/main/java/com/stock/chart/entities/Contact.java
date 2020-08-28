@@ -1,9 +1,6 @@
 package com.stock.chart.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Contact {
@@ -18,7 +15,8 @@ public class Contact {
     private String state;
     private String zip;
 
-    public Contact() { }
+    @OneToOne(mappedBy = "contact")
+    private StockExchange stockExchange;
 
     public Integer getId() {
         return id;
@@ -66,5 +64,13 @@ public class Contact {
 
     public void setZip(String zip) {
         this.zip = zip;
+    }
+
+    public StockExchange getStockExchange() {
+        return stockExchange;
+    }
+
+    public void setStockExchange(StockExchange stockExchange) {
+        this.stockExchange = stockExchange;
     }
 }

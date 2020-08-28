@@ -1,75 +1,105 @@
 package com.stock.chart.entities;
 
-import org.springframework.data.annotation.Id;
-
 import javax.persistence.*;
-import java.util.*;
+import java.util.List;
 
 @Entity
-
 public class Company {
 
-	@javax.persistence.Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
-	private String ceo;
-	private String brief;
-	private String name;
-	private Integer sector_id;
-	@OneToOne(cascade = CascadeType.ALL)
-	private BoardOfDirectors boardOfDirectors;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer id;
 
+    private String ceo;
+    private String brief;
+    private String name;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "sector_id", nullable = false)
+    private Sector sector;
 
-	public Company(){}
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "stock_exchange_id", nullable = false)
+    private StockExchange stockExchange;
 
-	public BoardOfDirectors getBoardOfDirectors() {
-		return boardOfDirectors;
-	}
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "company")
+    private List<Stock> stocks;
 
-	public void setBoardOfDirectors(BoardOfDirectors boardOfDirectors) {
-		this.boardOfDirectors = boardOfDirectors;
-	}
+    @OneToOne(cascade = CascadeType.ALL)
+    private BoardOfDirectors boardOfDirectors;
 
-	public Integer getId() {
-		return id;
-	}
+    @OneToOne(mappedBy = "company")
+    private IPO ipo;
 
-	public void setId(Integer id) {
-		this.id = id;
-	}
+    public BoardOfDirectors getBoardOfDirectors() {
+        return boardOfDirectors;
+    }
 
-	public String getCeo() {
-		return ceo;
-	}
+    public void setBoardOfDirectors(BoardOfDirectors boardOfDirectors) {
+        this.boardOfDirectors = boardOfDirectors;
+    }
 
-	public void setCeo(String ceo) {
-		this.ceo = ceo;
-	}
+    public Integer getId() {
+        return id;
+    }
 
-	public String getBrief() {
-		return brief;
-	}
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
-	public void setBrief(String brief) {
-		this.brief = brief;
-	}
+    public String getCeo() {
+        return ceo;
+    }
 
-	public String getName() {
-		return name;
-	}
+    public void setCeo(String ceo) {
+        this.ceo = ceo;
+    }
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    public String getBrief() {
+        return brief;
+    }
 
-	public Integer getSector_id() {
-		return sector_id;
-	}
+    public void setBrief(String brief) {
+        this.brief = brief;
+    }
 
-	public void setSector_id(Integer sector_id) {
-		this.sector_id = sector_id;
-	}
+    public String getName() {
+        return name;
+    }
 
+    public void setName(String name) {
+        this.name = name;
+    }
 
+    public Sector getSector() {
+        return sector;
+    }
+
+    public void setSector(Sector sector) {
+        this.sector = sector;
+    }
+
+    public StockExchange getStockExchange() {
+        return stockExchange;
+    }
+
+    public void setStockExchange(StockExchange stockExchange) {
+        this.stockExchange = stockExchange;
+    }
+
+    public List<Stock> getStocks() {
+        return stocks;
+    }
+
+    public void setStocks(List<Stock> stocks) {
+        this.stocks = stocks;
+    }
+
+    public IPO getIpo() {
+        return ipo;
+    }
+
+    public void setIpo(IPO ipo) {
+        this.ipo = ipo;
+    }
 }

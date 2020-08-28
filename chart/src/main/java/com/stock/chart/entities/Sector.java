@@ -1,9 +1,7 @@
 package com.stock.chart.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Sector {
@@ -15,6 +13,9 @@ public class Sector {
     private String name;
 
     private String brief;
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "sector")
+    private List<Company> companies;
 
     public Integer getId() {
         return id;
@@ -40,4 +41,11 @@ public class Sector {
         this.brief = brief;
     }
 
+    public List<Company> getCompanies() {
+        return companies;
+    }
+
+    public void setCompanies(List<Company> companies) {
+        this.companies = companies;
+    }
 }

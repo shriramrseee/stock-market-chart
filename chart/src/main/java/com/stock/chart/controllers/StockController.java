@@ -1,4 +1,6 @@
 package com.stock.chart.controllers;
 
-public class PriceController {
+
+public class StockController {
+
 }
