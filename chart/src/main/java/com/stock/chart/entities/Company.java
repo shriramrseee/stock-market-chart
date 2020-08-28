@@ -22,6 +22,9 @@ public class Company {
 	@ManyToMany(mappedBy = "companies")
 	private Set<StockExchange> stockExchanges;
 
+	@OneToMany(cascade = CascadeType.ALL)
+	private Set<IPO> ipos;
+
 	public Company(){}
 
 	public BoardOfDirectors getBoardOfDirectors() {
@@ -78,5 +81,13 @@ public class Company {
 
 	public void setStockExchanges(Set<StockExchange> stockExchanges) {
 		this.stockExchanges = stockExchanges;
+	}
+
+	public Set<IPO> getIpos() {
+		return ipos;
+	}
+
+	public void setIpos(Set<IPO> ipos) {
+		this.ipos = ipos;
 	}
 }
