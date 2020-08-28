@@ -22,4 +22,11 @@ public class CompanyService {
         return new ArrayList<>(companyRepo.findAll());
     }
 
+    public void UpdateCompany(Company company){
+        companyRepo.save(company);
+    }
+    public void DeleteCompany(Integer id){
+        companyRepo.deleteById(id);
+    }
+
 }
