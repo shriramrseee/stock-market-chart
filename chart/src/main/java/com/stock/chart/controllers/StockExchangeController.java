@@ -23,4 +23,14 @@ public class StockExchangeController {
     public List<StockExchange> getAllStockExchanges() {
         return stockExchangeService.getAllStockExchanges();
     }
+
+    @PutMapping("/update")
+    public void updateStockExchange(@RequestBody StockExchange stockExchange) {
+        stockExchangeService.updateStockExchange(stockExchange);
+    }
+
+    @DeleteMapping("/delete/{id}")
+    public void deleteStockExchange(@PathVariable Integer id){
+        stockExchangeService.deleteStockExchange(id);
+    }
 }
