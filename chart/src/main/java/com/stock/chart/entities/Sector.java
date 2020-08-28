@@ -1,5 +1,7 @@
 package com.stock.chart.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -41,6 +43,7 @@ public class Sector {
         this.brief = brief;
     }
 
+    @JsonIgnore
     public List<Company> getCompanies() {
         return companies;
     }

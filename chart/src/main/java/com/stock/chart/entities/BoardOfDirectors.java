@@ -1,5 +1,7 @@
 package com.stock.chart.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 @Entity
@@ -30,6 +32,7 @@ public class BoardOfDirectors {
         Directors = directors;
     }
 
+    @JsonIgnore
     public Company getCompany() {
         return company;
     }

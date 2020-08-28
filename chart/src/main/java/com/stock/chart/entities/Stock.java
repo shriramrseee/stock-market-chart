@@ -1,5 +1,7 @@
 package com.stock.chart.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -67,6 +69,7 @@ public class Stock {
         this.turnover = turnover;
     }
 
+    @JsonIgnore
     public Company getCompany() {
         return company;
     }
@@ -75,6 +78,7 @@ public class Stock {
         this.company = company;
     }
 
+    @JsonIgnore
     public StockExchange getStockExchange() {
         return stockExchange;
     }

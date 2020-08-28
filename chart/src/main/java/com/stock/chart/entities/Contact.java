@@ -1,5 +1,7 @@
 package com.stock.chart.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 @Entity
@@ -66,6 +68,7 @@ public class Contact {
         this.zip = zip;
     }
 
+    @JsonIgnore
     public StockExchange getStockExchange() {
         return stockExchange;
     }
