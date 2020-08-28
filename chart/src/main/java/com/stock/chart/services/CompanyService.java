@@ -1,6 +1,7 @@
 package com.stock.chart.services;
 
 import com.stock.chart.entities.Company;
+import com.stock.chart.entities.StockExchange;
 import com.stock.chart.repos.CompanyRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -29,4 +30,7 @@ public class CompanyService {
         companyRepo.deleteById(id);
     }
 
+    public List<Company> getAllCompaniesInAStockExchange(StockExchange stockExchange){
+        return companyRepo.findByStockExchanges(stockExchange);
+    }
 }

@@ -1,6 +1,7 @@
 package com.stock.chart.controllers;
 
 import com.stock.chart.entities.Company;
+import com.stock.chart.entities.StockExchange;
 import com.stock.chart.services.CompanyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -33,5 +34,9 @@ public class CompanyController {
         companyService.DeleteCompany(id);
     }
 
+    @GetMapping("/stock-exchange")
+    public List<Company> getAll(@RequestBody StockExchange stockExchange) {
+        return companyService.getAllCompaniesInAStockExchange(stockExchange);
+    }
 
 }

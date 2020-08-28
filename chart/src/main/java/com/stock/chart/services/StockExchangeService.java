@@ -30,9 +30,4 @@ public class StockExchangeService {
     public void deleteStockExchange(Integer id) {
         stockExchangeRepo.deleteById(id);
     }
-
-    public List<Company> getCompaniesList(StockExchange stockExchange) {
-        // TODO
-        return null;
-    }
 }

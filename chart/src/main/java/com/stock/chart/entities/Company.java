@@ -1,9 +1,17 @@
 package com.stock.chart.entities;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
 import javax.persistence.*;
 import java.util.Set;
 
 @Entity
+@JsonIdentityInfo(
+        generator = ObjectIdGenerators.PropertyGenerator.class,
+        property = "id")
+@JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
 public class Company {
 
     @Id
@@ -18,7 +26,7 @@ public class Company {
     @JoinColumn(name = "sector_id", nullable = false)
     private Sector sector;
 
-    @ManyToMany(mappedBy = "companies")
+    @ManyToMany(mappedBy = "companies", cascade = CascadeType.MERGE)
     private Set<StockExchange> stockExchanges;
 
     @OneToMany(mappedBy = "company")

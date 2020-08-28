@@ -19,14 +19,14 @@ public class StockExchange {
     private String brief;
     private String remarks;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "contact_id", nullable = false)
     private Contact contact;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "stockExchange")
     private Set<Stock> stocks;
 
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.MERGE)
     @JoinTable(
             name = "stock_exchange_companies",
             joinColumns = @JoinColumn(name = "stock_exchange_id", referencedColumnName = "id"),
