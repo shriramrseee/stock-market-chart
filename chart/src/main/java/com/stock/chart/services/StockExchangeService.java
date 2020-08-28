@@ -1,5 +1,6 @@
 package com.stock.chart.services;
 
+import com.stock.chart.entities.Company;
 import com.stock.chart.entities.StockExchange;
 import com.stock.chart.repos.StockExchangeRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,5 +21,18 @@ public class StockExchangeService {
 
     public void addStockExchange(StockExchange stockExchange) {
         stockExchangeRepo.save(stockExchange);
+    }
+
+    public void updateStockExchange(StockExchange stockExchange) {
+        stockExchangeRepo.save(stockExchange);
+    }
+
+    public void deleteStockExchange(Integer id) {
+        stockExchangeRepo.deleteById(id);
+    }
+
+    public List<Company> getCompaniesList(StockExchange stockExchange) {
+        // TODO
+        return null;
     }
 }
