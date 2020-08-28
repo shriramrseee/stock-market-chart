@@ -1,6 +1,7 @@
 package com.stock.chart.services;
 
 import com.stock.chart.entities.Company;
+import com.stock.chart.entities.Sector;
 import com.stock.chart.entities.StockExchange;
 import com.stock.chart.repos.CompanyRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,5 +33,9 @@ public class CompanyService {
 
     public List<Company> getAllCompaniesInAStockExchange(StockExchange stockExchange){
         return companyRepo.findByStockExchanges(stockExchange);
+    }
+
+    public List<Company> getAllCompaniesInASector(Sector sector) {
+        return companyRepo.findBySector(sector);
     }
 }

@@ -1,6 +1,7 @@
 package com.stock.chart.controllers;
 
 import com.stock.chart.entities.Company;
+import com.stock.chart.entities.Sector;
 import com.stock.chart.entities.StockExchange;
 import com.stock.chart.services.CompanyService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,4 +40,8 @@ public class CompanyController {
         return companyService.getAllCompaniesInAStockExchange(stockExchange);
     }
 
+    @GetMapping("/sector")
+    public List<Company> getBySector(@RequestBody Sector sector) {
+        return companyService.getAllCompaniesInASector(sector);
+    }
 }
