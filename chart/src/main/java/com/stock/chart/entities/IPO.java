@@ -1,6 +1,6 @@
 package com.stock.chart.entities;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -12,7 +12,12 @@ public class IPO {
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Integer id;
 
+    @Temporal(TemporalType.TIMESTAMP)
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private Date closeDate;
+
+    @Temporal(TemporalType.TIMESTAMP)
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private Date openDate;
 
     private String remarks;
@@ -72,7 +77,6 @@ public class IPO {
         this.count = count;
     }
 
-    @JsonIgnore
     public Company getCompany() {
         return company;
     }

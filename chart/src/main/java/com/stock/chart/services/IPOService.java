@@ -1,5 +1,6 @@
 package com.stock.chart.services;
 
+import com.stock.chart.entities.Company;
 import com.stock.chart.entities.IPO;
 import com.stock.chart.repos.IPORepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,5 +29,9 @@ public class IPOService {
 
     public void deleteIPO(Integer id) {
         ipoRepo.deleteById(id);
+    }
+
+    public List<IPO> getCompanyIPOs(Company company) {
+        return ipoRepo.findByCompany(company);
     }
 }

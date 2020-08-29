@@ -1,5 +1,6 @@
 package com.stock.chart.controllers;
 
+import com.stock.chart.entities.Company;
 import com.stock.chart.entities.IPO;
 import com.stock.chart.services.IPOService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,25 +13,30 @@ import java.util.List;
 public class IPOController {
 
     @Autowired
-    private IPOService sectorService;
+    private IPOService ipoService;
 
     @PostMapping("/add")
-    public void addIPO(@RequestBody IPO sector) {
-        sectorService.addIPO(sector);
+    public void addIPO(@RequestBody IPO ipo) {
+        ipoService.addIPO(ipo);
     }
 
     @GetMapping("/all")
     public List<IPO> getAllIPOs() {
-        return sectorService.getAllIPOs();
+        return ipoService.getAllIPOs();
     }
 
     @PutMapping("/update")
     public void updateIPO(@RequestBody IPO IPO) {
-        sectorService.updateIPO(IPO);
+        ipoService.updateIPO(IPO);
     }
 
     @DeleteMapping("/delete/{id}")
     public void deleteIPO(@PathVariable Integer id){
-        sectorService.deleteIPO(id);
+        ipoService.deleteIPO(id);
+    }
+
+    @GetMapping("/company")
+    public List<IPO> getCompanyIPOs(@RequestBody Company company) {
+       return ipoService.getCompanyIPOs(company);
     }
 }

@@ -25,7 +25,7 @@ public class CompanyController {
         return companyService.GetAllCompanies();
     }
 
-    @GetMapping("/update")
+     @PutMapping("/update")
      public void UpdateCompany(@RequestBody Company company){
         companyService.UpdateCompany(company);
     }
