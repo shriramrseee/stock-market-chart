@@ -23,7 +23,7 @@ public class UserController {
     }
 
     @PostMapping("/check")
-    public boolean checkToken(@RequestParam String token) {
+    public boolean checkToken(@RequestBody String token) {
         return userService.checkToken(token);
     }
 

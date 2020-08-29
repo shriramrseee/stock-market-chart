@@ -19,6 +19,10 @@ public class Token {
     @JoinColumn(nullable = false, name = "user_id")
     private User user;
 
+    public Token() {
+
+    }
+
     public Token(User user) {
         this.user = user;
         this.createdDate = LocalDate.now();

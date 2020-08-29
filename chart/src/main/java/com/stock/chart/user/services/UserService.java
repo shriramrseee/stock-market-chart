@@ -5,9 +5,11 @@ import com.stock.chart.user.entities.User;
 import com.stock.chart.user.repos.TokenRepo;
 import com.stock.chart.user.repos.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
+@Service
 public class UserService {
 
     @Autowired
