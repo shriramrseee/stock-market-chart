@@ -38,4 +38,8 @@ public class CompanyService {
     public List<Company> getAllCompaniesInASector(Sector sector) {
         return companyRepo.findBySector(sector);
     }
+
+    public List<Company> getMatchingCompanies(String pattern) {
+        return companyRepo.findByNameContainingIgnoreCase(pattern);
+    }
 }

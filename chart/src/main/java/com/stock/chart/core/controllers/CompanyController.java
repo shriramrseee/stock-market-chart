@@ -44,4 +44,12 @@ public class CompanyController {
     public List<Company> getBySector(@RequestBody Sector sector) {
         return companyService.getAllCompaniesInASector(sector);
     }
+
+    @GetMapping(
+            path = "/match",
+            consumes = "text/plain"
+    )
+    public List<Company> getMatchingCompanies(@RequestBody String name) {
+        return companyService.getMatchingCompanies(name);
+    }
 }

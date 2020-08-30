@@ -10,4 +10,6 @@ public interface CompanyRepo extends JpaRepository<Company,Integer> {
     List<Company> findByStockExchanges(StockExchange stockExchange);
 
     List<Company> findBySector(Sector sector);
+
+    List<Company> findByNameContainingIgnoreCase(String name);
 }
