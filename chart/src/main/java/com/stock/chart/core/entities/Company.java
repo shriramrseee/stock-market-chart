@@ -33,16 +33,16 @@ public class Company {
     private Set<Stock> stocks;
 
     @OneToOne(cascade = CascadeType.ALL)
-    private Board_of_Directors boardOfDirectors;
+    private BoardOfDirectors boardOfDirectors;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "company")
     private Set<IPO> ipos;
 
-    public Board_of_Directors getBoardOfDirectors() {
+    public BoardOfDirectors getBoardOfDirectors() {
         return boardOfDirectors;
     }
 
-    public void setBoardOfDirectors(Board_of_Directors boardOfDirectors) {
+    public void setBoardOfDirectors(BoardOfDirectors boardOfDirectors) {
         this.boardOfDirectors = boardOfDirectors;
     }
 
