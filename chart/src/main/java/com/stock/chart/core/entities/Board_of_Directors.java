@@ -6,7 +6,7 @@ import javax.persistence.*;
 
 @Entity
 
-public class BoardOfDirectors {
+public class Board_of_Directors {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
