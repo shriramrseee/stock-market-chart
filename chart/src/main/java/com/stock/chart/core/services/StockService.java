@@ -1,6 +1,7 @@
 package com.stock.chart.core.services;
 
 import com.stock.chart.core.entities.Stock;
+import com.stock.chart.core.models.StockFilter;
 import com.stock.chart.core.repos.StockRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -28,5 +29,9 @@ public class StockService {
 
     public void deleteStock(Integer id) {
         stockRepo.deleteById(id);
+    }
+
+    public List<Stock> getByCompanyStockExchangeDateRange(StockFilter sf) {
+        return stockRepo.findByCompanyStockExchangeDateRange(sf.getCompanyId(), sf.getStockExchangeId(), sf.getFrom(), sf.getTo());
     }
 }
