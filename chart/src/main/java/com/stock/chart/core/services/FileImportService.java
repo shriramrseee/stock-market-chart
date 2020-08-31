@@ -48,9 +48,9 @@ public class FileImportService {
             Double price = cells.next().getNumericCellValue();
             Date day = cells.next().getDateCellValue();
             String[] time = cells.next().getStringCellValue().split(":");
-            day.setHours(Integer.parseInt(time[0]));
-            day.setMinutes(Integer.parseInt(time[1]));
-            day.setSeconds(Integer.parseInt(time[2]));
+            day.setHours(Integer.parseInt(time[0].trim()));
+            day.setMinutes(Integer.parseInt(time[1].trim()));
+            day.setSeconds(Integer.parseInt(time[2].trim()));
             StockExchange se = getorCreateStockExchange(stockExchangeName);
             createStockPrice(price, day, getOrCreateCompany(companyName, se), se);
         }

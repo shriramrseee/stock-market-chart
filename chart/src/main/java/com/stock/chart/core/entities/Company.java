@@ -29,9 +29,6 @@ public class Company {
     @ManyToMany(mappedBy = "companies", cascade = CascadeType.MERGE)
     private Set<StockExchange> stockExchanges;
 
-    @OneToMany(mappedBy = "company")
-    private Set<Stock> stocks;
-
     @OneToOne(cascade = CascadeType.ALL)
     private BoardOfDirectors boardOfDirectors;
 
@@ -84,14 +81,6 @@ public class Company {
 
     public void setSector(Sector sector) {
         this.sector = sector;
-    }
-
-    public Set<Stock> getStocks() {
-        return stocks;
-    }
-
-    public void setStocks(Set<Stock> stocks) {
-        this.stocks = stocks;
     }
 
     public Set<IPO> getIpos() {

@@ -1,6 +1,7 @@
 package com.stock.chart.core.entities;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import javax.persistence.*;
@@ -22,9 +23,6 @@ public class StockExchange {
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "contact_id", nullable = false)
     private Contact contact;
-
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "stockExchange")
-    private Set<Stock> stocks;
 
     @ManyToMany(cascade = CascadeType.MERGE)
     @JoinTable(
@@ -64,14 +62,6 @@ public class StockExchange {
 
     public void setRemarks(String remarks) {
         this.remarks = remarks;
-    }
-
-    public Set<Stock> getStocks() {
-        return stocks;
-    }
-
-    public void setStocks(Set<Stock> stocks) {
-        this.stocks = stocks;
     }
 
     public Set<Company> getCompanies() {

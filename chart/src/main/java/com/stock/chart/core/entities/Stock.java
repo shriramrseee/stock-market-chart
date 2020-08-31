@@ -1,11 +1,15 @@
 package com.stock.chart.core.entities;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import javax.persistence.*;
 import java.util.Date;
 
 @Entity
+@JsonIdentityInfo(
+        generator = ObjectIdGenerators.PropertyGenerator.class,
+        property = "id")
 public class Stock {
 
     @Id
@@ -69,7 +73,6 @@ public class Stock {
         this.turnover = turnover;
     }
 
-    @JsonIgnore
     public Company getCompany() {
         return company;
     }
@@ -78,7 +81,6 @@ public class Stock {
         this.company = company;
     }
 
-    @JsonIgnore
     public StockExchange getStockExchange() {
         return stockExchange;
     }
