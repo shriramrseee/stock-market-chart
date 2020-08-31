@@ -3,8 +3,8 @@ package com.stock.chart.core.controllers;
 import com.stock.chart.core.services.FileImportService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.text.ParseException;
 
@@ -16,10 +16,9 @@ public class FileImportController {
     @Autowired
     private FileImportService fileImportService;
 
-    @GetMapping("/excel")
-    public void addSector() throws IOException, ParseException {
-        FileInputStream fs = new FileInputStream("path");
-        fileImportService.importExcelFile(fs);
+    @PostMapping("/excel")
+    public void importExcel(@RequestParam("file") MultipartFile data) throws IOException, ParseException {
+        fileImportService.importExcelFile(data.getInputStream());
     }
 
 }

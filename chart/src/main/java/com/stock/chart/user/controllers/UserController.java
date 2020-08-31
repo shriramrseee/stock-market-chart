@@ -27,4 +27,9 @@ public class UserController {
         return userService.checkToken(token);
     }
 
+    @PostMapping("/logout")
+    public void logoutUser(@RequestBody User user) {
+        userService.logoutUser(user);
+    }
+
 }

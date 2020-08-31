@@ -38,6 +38,15 @@ public class UserService {
         return t.isPresent();
     }
 
+    public void logoutUser(User user){
+        Optional<User> u = userRepo.findUserByName(user.getName());
+        if(u.isPresent() && u.get().getPassword().equals(user.getPassword())) {
+            tokenRepo.deleteByUser(user);
+        }
+    }
 
+    public void updateUser(User user) {
+        userRepo.save(user);
+    }
 
 }
