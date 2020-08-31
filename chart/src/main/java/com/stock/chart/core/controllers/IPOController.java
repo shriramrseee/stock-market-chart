@@ -15,7 +15,7 @@ public class IPOController {
     @Autowired
     private IPOService ipoService;
 
-    @PostMapping("/add")
+    @PostMapping("/admin/add")
     public void addIPO(@RequestBody IPO ipo) {
         ipoService.addIPO(ipo);
     }
@@ -25,12 +25,12 @@ public class IPOController {
         return ipoService.getAllIPOs();
     }
 
-    @PutMapping("/update")
+    @PutMapping("/admin/update")
     public void updateIPO(@RequestBody IPO IPO) {
         ipoService.updateIPO(IPO);
     }
 
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/admin/delete/{id}")
     public void deleteIPO(@PathVariable Integer id){
         ipoService.deleteIPO(id);
     }

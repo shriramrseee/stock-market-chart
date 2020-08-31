@@ -14,7 +14,7 @@ public class StockExchangeController {
     @Autowired
     private StockExchangeService stockExchangeService;
 
-    @PostMapping("/add")
+    @PostMapping("/admin/add")
     public void addStockExchange(@RequestBody StockExchange stockExchange) {
         stockExchangeService.addStockExchange(stockExchange);
     }
@@ -24,12 +24,12 @@ public class StockExchangeController {
         return stockExchangeService.getAllStockExchanges();
     }
 
-    @PutMapping("/update")
+    @PutMapping("/admin/update")
     public void updateStockExchange(@RequestBody StockExchange stockExchange) {
         stockExchangeService.updateStockExchange(stockExchange);
     }
 
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/admin/delete/{id}")
     public void deleteStockExchange(@PathVariable Integer id){
         stockExchangeService.deleteStockExchange(id);
     }

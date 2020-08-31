@@ -16,7 +16,7 @@ public class FileImportController {
     @Autowired
     private FileImportService fileImportService;
 
-    @PostMapping("/excel")
+    @PostMapping("/admin/excel")
     public void importExcel(@RequestParam("file") MultipartFile data) throws IOException, ParseException {
         fileImportService.importExcelFile(data.getInputStream());
     }

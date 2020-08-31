@@ -15,7 +15,7 @@ public class CompanyController {
     @Autowired
     private CompanyService companyService;
 
-    @PostMapping("/add")
+    @PostMapping("/admin/add")
     public void addCompany(@RequestBody Company company) {
         companyService.addCompany(company);
     }
@@ -25,12 +25,12 @@ public class CompanyController {
         return companyService.GetAllCompanies();
     }
 
-     @PutMapping("/update")
+     @PutMapping("/admin/update")
      public void UpdateCompany(@RequestBody Company company){
         companyService.UpdateCompany(company);
     }
 
-    @GetMapping("/delete/{id}")
+    @GetMapping("/admin/delete/{id}")
     public void DeleteCompany(@PathVariable Integer id){
         companyService.DeleteCompany(id);
     }
