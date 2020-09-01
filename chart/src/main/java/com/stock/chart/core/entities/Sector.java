@@ -22,6 +22,15 @@ public class Sector {
 
     private String brief;
 
+    public Sector() {
+    }
+
+    public Sector(Integer id, String name, String brief) {
+        this.id = id;
+        this.name = name;
+        this.brief = brief;
+    }
+
     public Integer getId() {
         return id;
     }
