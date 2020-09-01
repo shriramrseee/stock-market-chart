@@ -43,5 +43,5 @@ public class TestSector {
         service.deleteSector(25);
         verify(repo,times(1)).deleteById(25);
     }
-    
+
 }
