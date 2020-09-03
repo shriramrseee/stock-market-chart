@@ -18,8 +18,8 @@ public class SectorService {
         return new ArrayList<>(sectorRepo.findAll());
     }
 
-    public void addSector(Sector sector) {
-        sectorRepo.save(sector);
+    public Sector addSector(Sector sector) {
+        return sectorRepo.save(sector);
     }
 
     public void updateSector(Sector Sector) {
