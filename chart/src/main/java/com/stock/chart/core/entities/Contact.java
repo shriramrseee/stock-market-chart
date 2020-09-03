@@ -2,6 +2,7 @@ package com.stock.chart.core.entities;
 
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import javax.persistence.*;
@@ -73,6 +74,7 @@ public class Contact {
         this.zip = zip;
     }
 
+    @JsonIgnore
     public StockExchange getStockExchange() {
         return stockExchange;
     }

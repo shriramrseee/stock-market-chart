@@ -14,7 +14,7 @@ public class SectorController {
     @Autowired
     private SectorService sectorService;
 
-    @PostMapping("/add")
+    @PostMapping("/admin/add")
     public void addSector(@RequestBody Sector sector) {
         sectorService.addSector(sector);
     }
@@ -24,12 +24,12 @@ public class SectorController {
         return sectorService.getAllSectors();
     }
 
-    @PutMapping("/update")
+    @PutMapping("/admin/update")
     public void updateSector(@RequestBody Sector Sector) {
         sectorService.updateSector(Sector);
     }
 
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/admin/delete/{id}")
     public void deleteSector(@PathVariable Integer id){
         sectorService.deleteSector(id);
     }

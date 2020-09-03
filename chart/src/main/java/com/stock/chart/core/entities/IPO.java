@@ -2,6 +2,7 @@ package com.stock.chart.core.entities;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import javax.persistence.*;
@@ -30,8 +31,7 @@ public class IPO {
     private Double price;
     private Integer count;
 
-    @ManyToOne
-    @JoinColumn(name = "company_id", nullable = false, referencedColumnName = "id")
+    @OneToOne(mappedBy = "ipo")
     private Company company;
 
     public Integer getId() {
@@ -82,6 +82,7 @@ public class IPO {
         this.count = count;
     }
 
+    @JsonIgnore
     public Company getCompany() {
         return company;
     }
