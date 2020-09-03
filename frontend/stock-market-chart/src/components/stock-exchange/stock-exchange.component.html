@@ -1,0 +1,103 @@
+<mat-card *ngIf="userService.type === 'Admin'">
+  <mat-card-title>
+    Add
+  </mat-card-title>
+  <mat-card-content>
+    <div>
+      <mat-form-field appearance="fill">
+        <mat-label>Name</mat-label>
+        <input matInput required placeholder="BSE" [(ngModel)]="formStockExchange.name">
+      </mat-form-field>
+      &nbsp;
+      <mat-form-field appearance="fill">
+        <mat-label>Brief</mat-label>
+        <input matInput placeholder="" [(ngModel)]="formStockExchange.brief">
+      </mat-form-field>
+      &nbsp;
+      <mat-form-field appearance="fill">
+        <mat-label>Remarks</mat-label>
+        <input matInput placeholder="" [(ngModel)]="formStockExchange.remarks">
+      </mat-form-field>
+      <br>
+      <mat-form-field appearance="fill">
+        <mat-label>City</mat-label>
+        <input matInput required placeholder="" [(ngModel)]="formContact.city">
+      </mat-form-field>
+      &nbsp;
+      <mat-form-field appearance="fill">
+        <mat-label>Email</mat-label>
+        <input matInput required placeholder="" [(ngModel)]="formContact.email">
+      </mat-form-field>
+      &nbsp;
+      <mat-form-field appearance="fill">
+        <mat-label>Phone</mat-label>
+        <input matInput required placeholder="" [(ngModel)]="formContact.phone">
+      </mat-form-field>
+      &nbsp;
+      <mat-form-field appearance="fill">
+        <mat-label>State</mat-label>
+        <input matInput required placeholder="" [(ngModel)]="formContact.state">
+      </mat-form-field>
+      &nbsp;
+      <mat-form-field appearance="fill">
+        <mat-label>Zip</mat-label>
+        <input matInput required placeholder="" [(ngModel)]="formContact.zip">
+      </mat-form-field>
+    </div>
+    <div>
+      <button mat-raised-button color="primary" (click)="add()">Submit</button>
+      &nbsp;
+      <button mat-raised-button color="Accent" (click)="initForm()">Clear</button>
+    </div>
+  </mat-card-content>
+</mat-card>
+<mat-divider></mat-divider>
+<mat-card>
+  <mat-card-title>
+    View
+  </mat-card-title>
+  <mat-card-content>
+    <mat-table [dataSource]="stockExchanges" class="mat-elevation-z8">
+
+      <ng-container matColumnDef="name">
+        <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="brief">
+        <mat-header-cell *matHeaderCellDef> Brief </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.brief}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="city">
+        <mat-header-cell *matHeaderCellDef> City </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.contact.city}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="email">
+        <mat-header-cell *matHeaderCellDef> Email </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.contact.email}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="phone">
+        <mat-header-cell *matHeaderCellDef> Phone </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.contact.phone}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="state">
+        <mat-header-cell *matHeaderCellDef> State </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.contact.state}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="zip">
+        <mat-header-cell *matHeaderCellDef> Zip </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.contact.zip}} </mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let element; columns: displayedColumns;"></mat-row>
+    </mat-table>
+    <mat-paginator #paginator [pageSize]="5"
+                   [pageSizeOptions]="[5, 10]"></mat-paginator>
+  </mat-card-content>
+</mat-card>
