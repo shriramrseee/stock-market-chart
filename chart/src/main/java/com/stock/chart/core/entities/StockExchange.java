@@ -9,6 +9,7 @@ import java.util.Set;
 
 @Entity
 @JsonIdentityInfo(
+        scope = StockExchange.class,
         generator = ObjectIdGenerators.PropertyGenerator.class,
         property = "id")
 public class StockExchange {
@@ -17,6 +18,7 @@ public class StockExchange {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
+    private String name;
     private String brief;
     private String remarks;
 
@@ -24,12 +26,7 @@ public class StockExchange {
     @JoinColumn(name = "contact_id", nullable = false)
     private Contact contact;
 
-    @ManyToMany(cascade = CascadeType.MERGE)
-    @JoinTable(
-            name = "stock_exchange_companies",
-            joinColumns = @JoinColumn(name = "stock_exchange_id", referencedColumnName = "id"),
-            inverseJoinColumns = @JoinColumn(name = "company_id", referencedColumnName = "id")
-    )
+    @ManyToMany(mappedBy = "stockExchanges", cascade = CascadeType.MERGE)
     private Set<Company> companies;
 
     public Contact getContact() {
@@ -48,6 +45,14 @@ public class StockExchange {
         this.id = id;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public String getBrief() {
         return brief;
     }
@@ -64,6 +69,7 @@ public class StockExchange {
         this.remarks = remarks;
     }
 
+    @JsonIgnore
     public Set<Company> getCompanies() {
         return companies;
     }

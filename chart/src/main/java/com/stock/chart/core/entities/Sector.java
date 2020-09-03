@@ -9,6 +9,7 @@ import java.util.List;
 
 @Entity
 @JsonIdentityInfo(
+        scope = Sector.class,
         generator = ObjectIdGenerators.PropertyGenerator.class,
         property = "id")
 @JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
@@ -21,6 +22,15 @@ public class Sector {
     private String name;
 
     private String brief;
+
+    public Sector() {
+    }
+
+    public Sector(Integer id, String name, String brief) {
+        this.id = id;
+        this.name = name;
+        this.brief = brief;
+    }
 
     public Integer getId() {
         return id;

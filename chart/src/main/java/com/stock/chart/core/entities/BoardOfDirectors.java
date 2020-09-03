@@ -32,6 +32,7 @@ public class BoardOfDirectors {
         Directors = directors;
     }
 
+    @JsonIgnore
     public Company getCompany() {
         return company;
     }

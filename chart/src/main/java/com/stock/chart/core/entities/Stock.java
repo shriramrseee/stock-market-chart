@@ -1,5 +1,6 @@
 package com.stock.chart.core.entities;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
@@ -8,6 +9,7 @@ import java.util.Date;
 
 @Entity
 @JsonIdentityInfo(
+        scope = Stock.class,
         generator = ObjectIdGenerators.PropertyGenerator.class,
         property = "id")
 public class Stock {
@@ -16,6 +18,8 @@ public class Stock {
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Integer id;
 
+    @Temporal(TemporalType.DATE)
+    @JsonFormat(pattern="yyyy-MM-dd")
     private Date date;
 
     private Double openPrice;

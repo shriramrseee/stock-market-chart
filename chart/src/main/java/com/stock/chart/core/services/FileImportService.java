@@ -45,23 +45,20 @@ public class FileImportService {
             Iterator<Cell> cells = rowIterator.next().cellIterator();
             String companyName = cells.next().getStringCellValue();
             String stockExchangeName = cells.next().getStringCellValue();
-            Double price = cells.next().getNumericCellValue();
             Date day = cells.next().getDateCellValue();
-            String[] time = cells.next().getStringCellValue().split(":");
-            day.setHours(Integer.parseInt(time[0].trim()));
-            day.setMinutes(Integer.parseInt(time[1].trim()));
-            day.setSeconds(Integer.parseInt(time[2].trim()));
+            Double oprice = cells.next().getNumericCellValue();
+            Double cprice = cells.next().getNumericCellValue();
             StockExchange se = getorCreateStockExchange(stockExchangeName);
-            createStockPrice(price, day, getOrCreateCompany(companyName, se), se);
+            createStockPrice(oprice, cprice, day, getOrCreateCompany(companyName, se), se);
         }
     }
 
     private StockExchange getorCreateStockExchange(String stockExchangeName) {
-        List<StockExchange> ses = stockExchangeRepo.findByBriefContainingIgnoreCase(stockExchangeName);
+        List<StockExchange> ses = stockExchangeRepo.findByNameContainingIgnoreCase(stockExchangeName);
         if (ses == null || ses.size() == 0) {
             // Create
             StockExchange se = new StockExchange();
-            se.setBrief(stockExchangeName);
+            se.setName(stockExchangeName);
             se.setContact(getOrCreateContact(stockExchangeName+"City"));
             return stockExchangeRepo.save(se);
         }
@@ -109,10 +106,10 @@ public class FileImportService {
         }
     }
 
-    private Stock createStockPrice(Double price, Date day, Company company, StockExchange se) {
+    private Stock createStockPrice(Double oprice, Double cprice, Date day, Company company, StockExchange se) {
         Stock s = new Stock();
-        s.setClosePrice(price);
-        s.setOpenPrice(price);
+        s.setClosePrice(cprice);
+        s.setOpenPrice(oprice);
         s.setCompany(company);
         s.setStockExchange(se);
         s.setDate(day);

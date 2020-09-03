@@ -1,4 +1,4 @@
-package com.stock.chart.core;
+package com.stock.chart.user;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -45,6 +45,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .anyRequest().permitAll()
                 .and().formLogin();
         http.cors().configurationSource(corsConfigurationSource());
+
     }
 
 }

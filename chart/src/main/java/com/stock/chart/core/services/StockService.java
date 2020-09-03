@@ -32,6 +32,6 @@ public class StockService {
     }
 
     public List<Stock> getByCompanyStockExchangeDateRange(StockFilter sf) {
-        return stockRepo.findByCompanyStockExchangeDateRange(sf.getCompanyId(), sf.getStockExchangeId(), sf.getFrom(), sf.getTo());
+        return stockRepo.findByCompanyDateRange(sf.getCompanyId(), sf.getFrom(), sf.getTo());
     }
 }
