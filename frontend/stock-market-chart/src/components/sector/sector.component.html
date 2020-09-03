@@ -1,0 +1,49 @@
+<mat-card>
+  <mat-card-title>
+    Add
+  </mat-card-title>
+  <mat-card-content>
+    <div>
+      <mat-form-field appearance="fill">
+        <mat-label>Name</mat-label>
+        <input matInput required placeholder="Pharma" [(ngModel)]="formSector.name">
+      </mat-form-field>
+      &nbsp;
+      <mat-form-field appearance="fill">
+        <mat-label>Brief</mat-label>
+        <input matInput placeholder="" [(ngModel)]="formSector.brief">
+      </mat-form-field>
+      &nbsp;
+    </div>
+    <div>
+      <button mat-raised-button color="primary" (click)="add()">Submit</button>
+      &nbsp;
+      <button mat-raised-button color="Accent" (click)="initForm()">Clear</button>
+    </div>
+  </mat-card-content>
+</mat-card>
+<mat-divider></mat-divider>
+<mat-card>
+  <mat-card-title>
+    View
+  </mat-card-title>
+  <mat-card-content>
+    <mat-table [dataSource]="sectors" class="mat-elevation-z8">
+
+      <ng-container matColumnDef="name">
+        <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="brief">
+        <mat-header-cell *matHeaderCellDef> Brief </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.brief}} </mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let element; columns: displayedColumns;"></mat-row>
+    </mat-table>
+    <mat-paginator #paginator [pageSize]="5"
+                   [pageSizeOptions]="[5, 10]"></mat-paginator>
+  </mat-card-content>
+</mat-card>

@@ -17,9 +17,6 @@ export class StockExchangeComponent implements OnInit {
 
   displayedColumns = ['name', 'brief', 'city', 'email', 'phone', 'state', 'zip'];
 
-  @ViewChild(MatPaginator) paginator: MatPaginator;
-
-
   constructor(private stockExchangeService: StockExchangeService) {
     this.initForm();
   }
@@ -37,7 +34,6 @@ export class StockExchangeComponent implements OnInit {
   get(): void {
     this.stockExchangeService.getStockExchanges().subscribe(res => {
       this.stockExchanges = res;
-      console.log(this.stockExchanges);
     });
   }
 

@@ -1,0 +1,111 @@
+<mat-card>
+  <mat-card-title>
+    Add
+  </mat-card-title>
+  <mat-card-content>
+    <div>
+      <mat-form-field appearance="fill">
+        <mat-label>Name</mat-label>
+        <input matInput required placeholder="Airtel" [(ngModel)]="formCompany.name">
+      </mat-form-field>
+      &nbsp;
+      <mat-form-field appearance="fill">
+        <mat-label>Brief</mat-label>
+        <input matInput placeholder="" [(ngModel)]="formCompany.brief">
+      </mat-form-field>
+      &nbsp;
+      <mat-form-field appearance="fill">
+        <mat-label>Remarks</mat-label>
+        <input matInput placeholder="" [(ngModel)]="formCompany.ceo">
+      </mat-form-field>
+      &nbsp;
+      <mat-form-field appearance="fill">
+        <mat-label>Sector</mat-label>
+        <mat-select [(ngModel)]="formCompany.sector">
+          <mat-option *ngFor="let sector of sectors" [value]="sector">
+              {{sector.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      &nbsp;
+      <mat-form-field appearance="fill">
+        <mat-label>Stock Exchange</mat-label>
+        <mat-select [(ngModel)]="formCompany.stockExchanges[0]">
+          <mat-option *ngFor="let se of stockExchanges" [value]="se">
+            {{se.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <br>
+      <mat-form-field appearance="fill">
+        <mat-label>Close Date</mat-label>
+        <input matInput required placeholder="" [(ngModel)]="formIPO.closeDate">
+      </mat-form-field>
+      &nbsp;
+      <mat-form-field appearance="fill">
+        <mat-label>Open Date</mat-label>
+        <input matInput required placeholder="" [(ngModel)]="formIPO.openDate">
+      </mat-form-field>
+      &nbsp;
+      <mat-form-field appearance="fill">
+        <mat-label>Price</mat-label>
+        <input matInput required placeholder="" [(ngModel)]="formIPO.price">
+      </mat-form-field>
+      &nbsp;
+      <mat-form-field appearance="fill">
+        <mat-label>Count</mat-label>
+        <input matInput required type="number" placeholder="" [(ngModel)]="formIPO.count">
+      </mat-form-field>
+      &nbsp;
+      <mat-form-field appearance="fill">
+        <mat-label>Remarks</mat-label>
+        <input matInput required type="number" placeholder="" [(ngModel)]="formIPO.remarks">
+      </mat-form-field>
+    </div>
+    <div>
+      <button mat-raised-button color="primary" (click)="add()">Submit</button>
+      &nbsp;
+      <button mat-raised-button color="Accent" (click)="initForm()">Clear</button>
+    </div>
+  </mat-card-content>
+</mat-card>
+<mat-divider></mat-divider>
+<mat-card>
+  <mat-card-title>
+    View
+  </mat-card-title>
+  <mat-card-content>
+    <mat-table [dataSource]="companies" class="mat-elevation-z8">
+
+      <ng-container matColumnDef="name">
+        <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="brief">
+        <mat-header-cell *matHeaderCellDef> Brief </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.brief}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="ceo">
+        <mat-header-cell *matHeaderCellDef> CEO </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.ceo}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="sector">
+        <mat-header-cell *matHeaderCellDef> Sector </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.sector.name}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="stock exchange">
+        <mat-header-cell *matHeaderCellDef> Stock Exchange </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.stockExchanges[0].name}} </mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let element; columns: displayedColumns;"></mat-row>
+    </mat-table>
+    <mat-paginator #paginator [pageSize]="5"
+                   [pageSizeOptions]="[5, 10]"></mat-paginator>
+  </mat-card-content>
+</mat-card>
