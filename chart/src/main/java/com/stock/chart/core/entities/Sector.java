@@ -9,6 +9,7 @@ import java.util.List;
 
 @Entity
 @JsonIdentityInfo(
+        scope = Sector.class,
         generator = ObjectIdGenerators.PropertyGenerator.class,
         property = "id")
 @JsonIgnoreProperties({"hibernateLazyInitializer","handler"})

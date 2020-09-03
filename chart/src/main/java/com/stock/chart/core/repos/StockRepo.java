@@ -9,8 +9,8 @@ import java.util.List;
 
 public interface StockRepo  extends JpaRepository<Stock, Integer> {
 
-    @Query(value = "SELECT * FROM Stock s WHERE s.company_id = ?1 AND s.stock_exchange_id = ?2 AND s.date BETWEEN ?3 AND ?4", nativeQuery = true)
-    List<Stock> findByCompanyStockExchangeDateRange(Integer companyId, Integer stockExchangeId, Date from, Date to);
+    @Query(value = "SELECT * FROM Stock s WHERE s.company_id = ?1 AND s.date BETWEEN ?2 AND ?3", nativeQuery = true)
+    List<Stock> findByCompanyDateRange(Integer companyId, Date from, Date to);
 
 }
 

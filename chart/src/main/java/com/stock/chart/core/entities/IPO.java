@@ -10,6 +10,7 @@ import java.util.Date;
 
 @Entity
 @JsonIdentityInfo(
+        scope = IPO.class,
         generator = ObjectIdGenerators.PropertyGenerator.class,
         property = "id")
 public class IPO {

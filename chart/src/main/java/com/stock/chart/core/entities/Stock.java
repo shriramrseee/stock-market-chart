@@ -9,6 +9,7 @@ import java.util.Date;
 
 @Entity
 @JsonIdentityInfo(
+        scope = Stock.class,
         generator = ObjectIdGenerators.PropertyGenerator.class,
         property = "id")
 public class Stock {

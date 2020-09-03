@@ -1,21 +1,29 @@
 package com.stock.chart.core.models;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import java.util.Date;
 
 public class StockFilter {
 
     private Integer companyId;
-    private Integer stockExchangeId;
+
+    @Temporal(TemporalType.DATE)
+    @JsonFormat(pattern="yyyy-MM-dd")
     private Date from;
+
+    @Temporal(TemporalType.DATE)
+    @JsonFormat(pattern="yyyy-MM-dd")
     private Date to;
 
     public StockFilter() {
 
     }
 
-    public StockFilter(Integer company_id, Integer stockExchangeId, Date from, Date to) {
+    public StockFilter(Integer company_id, Date from, Date to) {
         this.companyId = company_id;
-        this.stockExchangeId = stockExchangeId;
         this.from = from;
         this.to = to;
     }
@@ -26,14 +34,6 @@ public class StockFilter {
 
     public void setCompanyId(Integer companyId) {
         this.companyId = companyId;
-    }
-
-    public Integer getStockExchangeId() {
-        return stockExchangeId;
-    }
-
-    public void setStockExchangeId(Integer stockExchangeId) {
-        this.stockExchangeId = stockExchangeId;
     }
 
     public Date getFrom() {

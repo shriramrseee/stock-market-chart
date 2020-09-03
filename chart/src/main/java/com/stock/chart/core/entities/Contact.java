@@ -9,6 +9,7 @@ import javax.persistence.*;
 
 @Entity
 @JsonIdentityInfo(
+        scope = Contact.class,
         generator = ObjectIdGenerators.PropertyGenerator.class,
         property = "id")
 public class Contact {

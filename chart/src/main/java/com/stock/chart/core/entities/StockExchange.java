@@ -9,6 +9,7 @@ import java.util.Set;
 
 @Entity
 @JsonIdentityInfo(
+        scope = StockExchange.class,
         generator = ObjectIdGenerators.PropertyGenerator.class,
         property = "id")
 public class StockExchange {

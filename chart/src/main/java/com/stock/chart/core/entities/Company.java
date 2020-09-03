@@ -9,6 +9,7 @@ import java.util.Set;
 
 @Entity
 @JsonIdentityInfo(
+        scope = Company.class,
         generator = ObjectIdGenerators.PropertyGenerator.class,
         property = "id")
 @JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
@@ -98,12 +99,10 @@ public class Company {
     }
 
     public Set<StockExchange> getStockExchanges() {
-        System.out.println(stockExchanges);
         return stockExchanges;
     }
 
     public void setStockExchanges(Set<StockExchange> stockExchanges) {
-        System.out.println(stockExchanges);
         this.stockExchanges = stockExchanges;
     }
 }
