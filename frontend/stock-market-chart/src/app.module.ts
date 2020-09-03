@@ -22,6 +22,12 @@ import { SectorComponent } from './components/sector/sector.component';
 import {SectorService} from './services/sector.service';
 import { CompanyComponent } from './components/company/company.component';
 import {CompanyService} from './services/company.service';
+import { StockComponent } from './components/stock/stock.component';
+import {StockService} from './services/stock.service';
+import { ChartsModule } from 'ng2-charts/ng2-charts';
+import { UserComponent } from './components/user/user.component';
+import {UserService} from './services/user.service';
+import { ContentComponent } from './components/content/content.component';
 
 
 @NgModule({
@@ -29,7 +35,10 @@ import {CompanyService} from './services/company.service';
     AppComponent,
     StockExchangeComponent,
     SectorComponent,
-    CompanyComponent
+    CompanyComponent,
+    StockComponent,
+    UserComponent,
+    ContentComponent
   ],
   imports: [
     BrowserModule,
@@ -46,9 +55,10 @@ import {CompanyService} from './services/company.service';
     MatTableModule,
     MatPaginatorModule,
     MatTabsModule,
-    MatSelectModule
+    MatSelectModule,
+    ChartsModule
   ],
-  providers: [StockExchangeService, SectorService, CompanyService],
+  providers: [StockExchangeService, SectorService, CompanyService, StockService, UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

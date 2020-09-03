@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Sector} from '../../models/sector';
 import {SectorService} from '../../services/sector.service';
+import {UserService} from '../../services/user.service';
 
 @Component({
   selector: 'app-sector',
@@ -14,7 +15,9 @@ export class SectorComponent implements OnInit {
 
   displayedColumns = ['name', 'brief'];
 
-  constructor(private sectorService: SectorService) {
+  constructor(private sectorService: SectorService
+            , public userService: UserService
+  ) {
     this.initForm();
   }
 

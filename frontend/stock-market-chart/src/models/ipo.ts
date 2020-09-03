@@ -8,8 +8,8 @@ export class IPO {
   count: number;
 
   constructor() {
-   this.closeDate = '';
-   this.openDate = '';
+   this.closeDate = '2020-01-01 00:00:00';
+   this.openDate = '2020-01-01 00:00:00';
    this.remarks = '';
    this.price = 0;
    this.count = 0;

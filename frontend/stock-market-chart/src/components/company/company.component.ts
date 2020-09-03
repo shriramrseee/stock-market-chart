@@ -6,6 +6,7 @@ import {Company} from '../../models/company';
 import {IPO} from '../../models/ipo';
 import {SectorService} from '../../services/sector.service';
 import {Sector} from '../../models/sector';
+import {UserService} from '../../services/user.service';
 
 @Component({
   selector: 'app-company',
@@ -20,10 +21,11 @@ export class CompanyComponent implements OnInit {
   formCompany: Company;
   formIPO: IPO;
 
-  displayedColumns = ['name', 'brief', 'ceo', 'sector', 'stock exchange'];
+  displayedColumns = ['name', 'brief', 'ceo', 'sector', 'stock exchange', 'IPO open', 'IPO close', 'price', 'count'];
 
   constructor(private stockExchangeService: StockExchangeService
             , private companyService: CompanyService
+            , public userService: UserService
             , private sectorService: SectorService) {
     this.initForm();
   }

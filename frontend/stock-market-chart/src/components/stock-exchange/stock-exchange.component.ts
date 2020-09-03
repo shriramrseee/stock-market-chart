@@ -3,6 +3,7 @@ import {StockExchangeService} from '../../services/stock-exchange.service';
 import {StockExchange} from '../../models/stock-exchange';
 import {Contact} from '../../models/contact';
 import {MatPaginator} from '@angular/material/paginator';
+import {UserService} from '../../services/user.service';
 
 @Component({
   selector: 'app-stock-exchange',
@@ -17,7 +18,9 @@ export class StockExchangeComponent implements OnInit {
 
   displayedColumns = ['name', 'brief', 'city', 'email', 'phone', 'state', 'zip'];
 
-  constructor(private stockExchangeService: StockExchangeService) {
+  constructor(private stockExchangeService: StockExchangeService
+            , public userService: UserService
+  ) {
     this.initForm();
   }
 

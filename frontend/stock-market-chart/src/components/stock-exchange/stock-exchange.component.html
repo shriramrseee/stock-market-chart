@@ -1,4 +1,4 @@
-<mat-card>
+<mat-card *ngIf="userService.type === 'Admin'">
   <mat-card-title>
     Add
   </mat-card-title>
@@ -70,27 +70,27 @@
       </ng-container>
 
       <ng-container matColumnDef="city">
-        <mat-header-cell *matHeaderCellDef> Brief </mat-header-cell>
+        <mat-header-cell *matHeaderCellDef> City </mat-header-cell>
         <mat-cell *matCellDef="let element"> {{element.contact.city}} </mat-cell>
       </ng-container>
 
       <ng-container matColumnDef="email">
-        <mat-header-cell *matHeaderCellDef> Brief </mat-header-cell>
+        <mat-header-cell *matHeaderCellDef> Email </mat-header-cell>
         <mat-cell *matCellDef="let element"> {{element.contact.email}} </mat-cell>
       </ng-container>
 
       <ng-container matColumnDef="phone">
-        <mat-header-cell *matHeaderCellDef> Brief </mat-header-cell>
+        <mat-header-cell *matHeaderCellDef> Phone </mat-header-cell>
         <mat-cell *matCellDef="let element"> {{element.contact.phone}} </mat-cell>
       </ng-container>
 
       <ng-container matColumnDef="state">
-        <mat-header-cell *matHeaderCellDef> Brief </mat-header-cell>
+        <mat-header-cell *matHeaderCellDef> State </mat-header-cell>
         <mat-cell *matCellDef="let element"> {{element.contact.state}} </mat-cell>
       </ng-container>
 
       <ng-container matColumnDef="zip">
-        <mat-header-cell *matHeaderCellDef> Brief </mat-header-cell>
+        <mat-header-cell *matHeaderCellDef> Zip </mat-header-cell>
         <mat-cell *matCellDef="let element"> {{element.contact.zip}} </mat-cell>
       </ng-container>
 

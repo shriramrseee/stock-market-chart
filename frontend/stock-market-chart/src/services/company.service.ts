@@ -19,7 +19,6 @@ export class CompanyService {
   }
 
   addCompany(s: Company): any {
-    console.log(JSON.stringify(s));
     return this.http.post(this.url + 'admin/add', JSON.stringify(s), this.headers);
   }
 

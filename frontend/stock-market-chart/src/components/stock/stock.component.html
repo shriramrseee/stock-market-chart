@@ -1,0 +1,88 @@
+<mat-card>
+  <mat-card-title>
+    Add
+  </mat-card-title>
+  <mat-card-content>
+    <div>
+      <mat-form-field appearance="fill">
+        <mat-label>Company</mat-label>
+        <mat-select [(ngModel)]="formStock.company">
+          <mat-option *ngFor="let company of companies" [value]="company">
+            {{company.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      &nbsp;
+      <mat-form-field appearance="fill">
+        <mat-label>Stock Exchange</mat-label>
+        <mat-select [(ngModel)]="formStock.stockExchange">
+          <mat-option *ngFor="let se of stockExchanges" [value]="se">
+            {{se.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      &nbsp;
+      <mat-form-field appearance="fill">
+        <mat-label>Date</mat-label>
+        <input matInput required placeholder="" [(ngModel)]="formStock.date">
+      </mat-form-field>
+      &nbsp;
+      <mat-form-field appearance="fill">
+        <mat-label>Open Price</mat-label>
+        <input matInput required placeholder="" [(ngModel)]="formStock.openPrice">
+      </mat-form-field>
+      &nbsp;
+      <mat-form-field appearance="fill">
+        <mat-label>Close Price</mat-label>
+        <input matInput required type="number" placeholder="" [(ngModel)]="formStock.closePrice">
+      </mat-form-field>
+    </div>
+    <div>
+      <button mat-raised-button color="primary" (click)="add()">Submit</button>
+      &nbsp;
+      <button mat-raised-button color="Accent" (click)="initForm()">Clear</button>
+    </div>
+  </mat-card-content>
+</mat-card>
+<mat-divider></mat-divider>
+<mat-card>
+  <mat-card-title>
+    View
+  </mat-card-title>
+  <mat-card-content>
+    <div>
+      <mat-form-field appearance="fill">
+        <mat-label>Company</mat-label>
+        <mat-select [(ngModel)]="stockFilter.companyId">
+          <mat-option *ngFor="let company of companies" [value]="company.id">
+            {{company.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      &nbsp;
+      <mat-form-field appearance="fill">
+        <mat-label>From Date</mat-label>
+        <input matInput required placeholder="" [(ngModel)]="stockFilter.from">
+      </mat-form-field>
+      &nbsp;
+      <mat-form-field appearance="fill">
+        <mat-label>To Date</mat-label>
+        <input matInput required placeholder="" [(ngModel)]="stockFilter.to">
+      </mat-form-field>
+    </div>
+    <div>
+      <button mat-raised-button color="primary" (click)="getStocks()">Apply</button>
+    </div>
+    <div style="display: block;">
+      <canvas baseChart width="1400" height="400"
+              [datasets]="lineChartData"
+              [labels]="lineChartLabels"
+              [legend]="lineChartLegend"
+              [chartType]="lineChartType"
+              [plugins]="lineChartPlugins">
+      </canvas>
+    </div>
+  </mat-card-content>
+</mat-card>
+
+
