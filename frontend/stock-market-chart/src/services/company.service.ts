@@ -25,4 +25,8 @@ export class CompanyService {
   deleteCompany(id: number): any {
     return this.http.delete(this.url + 'admin/delete/' + id);
   }
+
+  updateCompanyDetails(company: Company): any {
+    return this.http.put(this.url + 'admin/update', JSON.stringify(company), this.headers)
+  }
 }

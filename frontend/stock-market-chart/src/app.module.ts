@@ -31,6 +31,7 @@ import { ContentComponent } from './components/content/content.component';
 import {MatIconModule} from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatDialogModule } from '@angular/material/dialog';
+import { CompanyEditDialogComponent } from './components/company/edit-dialog/edit-dialog.component';
 
 
 @NgModule({
@@ -41,7 +42,8 @@ import { MatDialogModule } from '@angular/material/dialog';
     CompanyComponent,
     StockComponent,
     UserComponent,
-    ContentComponent
+    ContentComponent,
+    CompanyEditDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -65,6 +67,9 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatDialogModule
   ],
   providers: [StockExchangeService, SectorService, CompanyService, StockService, UserService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents : [
+    CompanyEditDialogComponent
+  ]
 })
 export class AppModule { }
