@@ -22,4 +22,7 @@ export class CompanyService {
     return this.http.post(this.url + 'admin/add', JSON.stringify(s), this.headers);
   }
 
+  deleteCompany(id: number): any {
+    return this.http.delete(this.url + 'admin/delete/' + id);
+  }
 }

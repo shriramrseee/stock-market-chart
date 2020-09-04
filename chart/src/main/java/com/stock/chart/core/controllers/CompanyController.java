@@ -30,7 +30,7 @@ public class CompanyController {
         companyService.UpdateCompany(company);
     }
 
-    @GetMapping("/admin/delete/{id}")
+    @DeleteMapping("/admin/delete/{id}")
     public void DeleteCompany(@PathVariable Integer id){
         companyService.DeleteCompany(id);
     }

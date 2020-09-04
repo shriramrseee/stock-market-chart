@@ -21,7 +21,8 @@ export class CompanyComponent implements OnInit {
   formCompany: Company;
   formIPO: IPO;
 
-  displayedColumns = ['name', 'brief', 'ceo', 'sector', 'stock exchange', 'IPO open', 'IPO close', 'price', 'count'];
+  displayedColumns = ['name', 'brief', 'ceo', 'sector', 'stock exchange',
+   'IPO open', 'IPO close', 'price', 'count', 'actions'];
 
   constructor(private stockExchangeService: StockExchangeService
             , private companyService: CompanyService
@@ -71,4 +72,11 @@ export class CompanyComponent implements OnInit {
     });
   }
 
+  delete(id: any): void {
+    this.companyService.deleteCompany(id).subscribe(res => {
+      this.initForm();
+      this.getCompanies();
+    });
+  }
+  
 }

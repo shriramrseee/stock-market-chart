@@ -28,6 +28,9 @@ import { ChartsModule } from 'ng2-charts/ng2-charts';
 import { UserComponent } from './components/user/user.component';
 import {UserService} from './services/user.service';
 import { ContentComponent } from './components/content/content.component';
+import {MatIconModule} from '@angular/material/icon';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatDialogModule } from '@angular/material/dialog';
 
 
 @NgModule({
@@ -56,7 +59,10 @@ import { ContentComponent } from './components/content/content.component';
     MatPaginatorModule,
     MatTabsModule,
     MatSelectModule,
-    ChartsModule
+    ChartsModule,
+    MatIconModule,
+    MatTooltipModule,
+    MatDialogModule
   ],
   providers: [StockExchangeService, SectorService, CompanyService, StockService, UserService],
   bootstrap: [AppComponent]
