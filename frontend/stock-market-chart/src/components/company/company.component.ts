@@ -24,7 +24,7 @@ export class CompanyComponent implements OnInit {
   formIPO: IPO;
 
   displayedColumns = ['name', 'brief', 'ceo', 'sector', 'stock exchange',
-    'IPO open', 'IPO close', 'price', 'count', 'actions'];
+    'IPO open', 'IPO close', 'price', 'count'];
 
   constructor(
     private stockExchangeService: StockExchangeService,
@@ -34,6 +34,7 @@ export class CompanyComponent implements OnInit {
     public dialog: MatDialog
   ) {
     this.initForm();
+    if (userService.type === "Admin") this.displayedColumns.push('actions')
   }
 
   ngOnInit(): void {
