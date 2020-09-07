@@ -14,7 +14,7 @@ import {UserService} from '../../services/user.service';
   styleUrls: ['./company.component.css']
 })
 export class CompanyComponent implements OnInit {
-
+  deleteId: string;
   stockExchanges: StockExchange[];
   sectors: Sector[];
   companies: Company[];
@@ -70,5 +70,10 @@ export class CompanyComponent implements OnInit {
       this.getCompanies();
     });
   }
+
+
+  delete(): void{
+    this.companyService.remove(this.deleteId);
+      }
 
 }

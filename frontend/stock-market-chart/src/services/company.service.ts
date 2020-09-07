@@ -9,7 +9,7 @@ import {Injectable} from '@angular/core';
 export class CompanyService {
 
   url = 'http://localhost:8081/company/';
-  headers = { headers: new HttpHeaders({ 'Content-Type': 'application/json' })};
+  headers = {headers: new HttpHeaders({'Content-Type': 'application/json'})};
 
   constructor(private http: HttpClient) {
   }
@@ -22,4 +22,13 @@ export class CompanyService {
     return this.http.post(this.url + 'admin/add', JSON.stringify(s), this.headers);
   }
 
+
+  remove(s: string): void {
+    console.log(s);
+    this.http.get(this.url + 'admin/delete/' + s)
+      .subscribe((response) => {
+
+      });
+
+  }
 }
