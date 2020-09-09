@@ -14,6 +14,13 @@ pipeline {
                 }
             }
         }
+        stage('BuildEureka') {
+            steps {
+                dir('eureka-server') {
+                    bat 'mvn -B -DskipTests clean package'
+                }
+            }
+        }
         stage('BuildFrontend') {
             steps {
                 dir('frontend/stock-market-chart') {
