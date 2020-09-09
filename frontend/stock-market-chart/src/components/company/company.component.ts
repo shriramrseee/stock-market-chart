@@ -1,14 +1,12 @@
-import { Component, OnInit } from '@angular/core';
-import { StockExchange } from '../../models/stock-exchange';
-import { StockExchangeService } from '../../services/stock-exchange.service';
-import { CompanyService } from '../../services/company.service';
-import { Company } from '../../models/company';
-import { IPO } from '../../models/ipo';
-import { SectorService } from '../../services/sector.service';
-import { Sector } from '../../models/sector';
-import { UserService } from '../../services/user.service';
-import { MatDialog } from '@angular/material/dialog';
-import { CompanyEditDialogComponent } from './edit-dialog/edit-dialog.component'
+import {Component, OnInit} from '@angular/core';
+import {StockExchange} from '../../models/stock-exchange';
+import {StockExchangeService} from '../../services/stock-exchange.service';
+import {CompanyService} from '../../services/company.service';
+import {Company} from '../../models/company';
+import {IPO} from '../../models/ipo';
+import {SectorService} from '../../services/sector.service';
+import {Sector} from '../../models/sector';
+import {UserService} from '../../services/user.service';
 
 @Component({
   selector: 'app-company',
@@ -16,29 +14,24 @@ import { CompanyEditDialogComponent } from './edit-dialog/edit-dialog.component'
   styleUrls: ['./company.component.css']
 })
 export class CompanyComponent implements OnInit {
-
+  deleteId: string;
   stockExchanges: StockExchange[];
   sectors: Sector[];
   companies: Company[];
   formCompany: Company;
   formIPO: IPO;
 
-  displayedColumns = ['name', 'brief', 'ceo', 'sector', 'stock exchange',
-    'IPO open', 'IPO close', 'price', 'count'];
+  displayedColumns = ['name', 'brief', 'ceo', 'sector', 'stock exchange', 'IPO open', 'IPO close', 'price', 'count'];
 
-  constructor(
-    private stockExchangeService: StockExchangeService,
-    private companyService: CompanyService,
-    public userService: UserService,
-    private sectorService: SectorService,
-    public dialog: MatDialog
-  ) {
+  constructor(private stockExchangeService: StockExchangeService
+            , private companyService: CompanyService
+            , public userService: UserService
+            , private sectorService: SectorService) {
     this.initForm();
-    if (userService.type === "Admin") this.displayedColumns.push('actions')
   }
 
   ngOnInit(): void {
-    this.getCompanies();
+   this.getCompanies();
   }
 
   initForm(): void {
@@ -78,22 +71,9 @@ export class CompanyComponent implements OnInit {
     });
   }
 
-  delete(id: any): void {
-    this.companyService.deleteCompany(id).subscribe(res => {
-      this.initForm();
-      this.getCompanies();
-    });
-  }
 
-  update(company: Company): void {
-    const dialogRef = this.dialog.open(CompanyEditDialogComponent, {
-      data: company
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-        this.initForm();
-        this.getCompanies();
-    });
-  }
+  delete(): void{
+    this.companyService.remove(this.deleteId);
+      }
 
 }
