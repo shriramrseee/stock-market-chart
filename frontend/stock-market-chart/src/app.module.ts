@@ -28,6 +28,10 @@ import { ChartsModule } from 'ng2-charts/ng2-charts';
 import { UserComponent } from './components/user/user.component';
 import {UserService} from './services/user.service';
 import { ContentComponent } from './components/content/content.component';
+import {MatIconModule} from '@angular/material/icon';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatDialogModule } from '@angular/material/dialog';
+import { CompanyEditDialogComponent } from './components/company/edit-dialog/edit-dialog.component';
 
 
 @NgModule({
@@ -38,7 +42,8 @@ import { ContentComponent } from './components/content/content.component';
     CompanyComponent,
     StockComponent,
     UserComponent,
-    ContentComponent
+    ContentComponent,
+    CompanyEditDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -56,9 +61,15 @@ import { ContentComponent } from './components/content/content.component';
     MatPaginatorModule,
     MatTabsModule,
     MatSelectModule,
-    ChartsModule
+    ChartsModule,
+    MatIconModule,
+    MatTooltipModule,
+    MatDialogModule
   ],
   providers: [StockExchangeService, SectorService, CompanyService, StockService, UserService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents : [
+    CompanyEditDialogComponent
+  ]
 })
 export class AppModule { }

@@ -24,12 +24,17 @@ public class UserService {
         tokenRepo.save(t);
     }
 
-    public String loginUser(User user){
+    public String[] loginUser(User user){
         Optional<User> u = userRepo.findUserByName(user.getName());
+        String[] s = new String[2];
         if(u.isPresent() && u.get().getPassword().equals(user.getPassword())) {
-            return tokenRepo.findTokenByUser(u.get()).get().getToken();
+            s[0] = u.get().getType();
+            s[1] = tokenRepo.findTokenByUser(u.get()).get().getToken();
+            return s;
         } else {
-            return "";
+            s[0] = "";
+            s[1] = "";
+            return s;
         }
     }
 

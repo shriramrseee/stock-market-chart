@@ -9,6 +9,7 @@ import java.util.Set;
 
 @Entity
 @JsonIdentityInfo(
+        scope = Company.class,
         generator = ObjectIdGenerators.PropertyGenerator.class,
         property = "id")
 @JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
@@ -26,14 +27,20 @@ public class Company {
     @JoinColumn(name = "sector_id", nullable = false)
     private Sector sector;
 
-    @ManyToMany(mappedBy = "companies", cascade = CascadeType.MERGE)
+    @ManyToMany(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
+    @JoinTable(
+            name = "stock_exchange_companies",
+            joinColumns = @JoinColumn(name = "stock_exchange_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "company_id", referencedColumnName = "id")
+    )
     private Set<StockExchange> stockExchanges;
 
     @OneToOne(cascade = CascadeType.ALL)
     private BoardOfDirectors boardOfDirectors;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "company")
-    private Set<IPO> ipos;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "ipo_id", nullable = false, referencedColumnName = "id")
+    private IPO ipo;
 
     public BoardOfDirectors getBoardOfDirectors() {
         return boardOfDirectors;
@@ -83,12 +90,12 @@ public class Company {
         this.sector = sector;
     }
 
-    public Set<IPO> getIpos() {
-        return ipos;
+    public IPO getIpo() {
+        return ipo;
     }
 
-    public void setIpos(Set<IPO> ipos) {
-        this.ipos = ipos;
+    public void setIpo(IPO ipo) {
+        this.ipo = ipo;
     }
 
     public Set<StockExchange> getStockExchanges() {

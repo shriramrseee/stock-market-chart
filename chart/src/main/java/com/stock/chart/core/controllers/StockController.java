@@ -16,8 +16,8 @@ public class StockController {
     private StockService stockService;
 
     @PostMapping("/add")
-    public void addStock(@RequestBody Stock sector) {
-        stockService.addStock(sector);
+    public void addStock(@RequestBody Stock stock) {
+        stockService.addStock(stock);
     }
 
     @GetMapping("/all")
