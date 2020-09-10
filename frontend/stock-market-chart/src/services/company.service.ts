@@ -23,12 +23,8 @@ export class CompanyService {
   }
 
 
-  remove(s: string): void {
-    console.log(s);
-    this.http.get(this.url + 'admin/delete/' + s)
-      .subscribe((response) => {
-
-      });
-
+  deleteCompany(id: number): any {
+    return this.http.delete(this.url + 'admin/delete/' + id);
   }
+
 }

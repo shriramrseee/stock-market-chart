@@ -27,6 +27,7 @@ export class CompanyComponent implements OnInit {
             , private companyService: CompanyService
             , public userService: UserService
             , private sectorService: SectorService) {
+    if (userService.type === "Admin") this.displayedColumns.push('actions')
     this.initForm();
   }
 
@@ -72,8 +73,11 @@ export class CompanyComponent implements OnInit {
   }
 
 
-  delete(): void{
-    this.companyService.remove(this.deleteId);
-      }
+  delete(id: any): void {
+    this.companyService.deleteCompany(id).subscribe(res => {
+      this.initForm();
+      this.getCompanies();
+    });
+  }
 
 }
