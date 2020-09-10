@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {User} from '../../models/user';
 import {UserService} from '../../services/user.service';
 import {ActivatedRoute, Router} from '@angular/router';
+import { JwtResponse } from '../../models/jwt-response';
 
 @Component({
   selector: 'app-user',
@@ -12,6 +13,7 @@ export class UserComponent implements OnInit {
 
   formUser: User;
   formUser1: User;
+  jwtResponse: JwtResponse;
 
   constructor(private userService: UserService
             , private router: Router) {
@@ -28,9 +30,12 @@ export class UserComponent implements OnInit {
 
   login(): void {
     this.userService.loginUser(this.formUser).subscribe(res => {
-      this.userService.type = res[0];
-      this.userService.token = res[1];
-      this.router.navigate(['/content', {}]);
+      this.jwtResponse = res;
+      this.userService.type = this.jwtResponse.type;
+      this.userService.token = 'Bearer '+ this.jwtResponse.token;
+      sessionStorage.setItem('token', this.userService.token);
+      
+      this.router.navigate(['/content']);
       this.initForm();
     });
   }

@@ -26,6 +26,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .withUser("admin").password("@dM1N987").authorities("ROLE_ADMIN");
     }
 
+    /*
     CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
         List<String> allowOrigins = Arrays.asList("*");
@@ -37,6 +38,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         source.registerCorsConfiguration("/**", configuration);
         return source;
     }
+    */
 
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable().httpBasic().and().authorizeRequests()
@@ -44,7 +46,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 //                .antMatchers("/*").hasAuthority("ROLE_USER")
                 .anyRequest().permitAll()
                 .and().formLogin();
-        http.cors().configurationSource(corsConfigurationSource());
+        //http.cors().configurationSource(corsConfigurationSource());
     }
 
 }

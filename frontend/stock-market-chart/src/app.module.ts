@@ -5,7 +5,7 @@ import { AppRoutingModule } from './components/app/app-routing.module';
 import { AppComponent } from './components/app/app.component';
 import { StockExchangeComponent } from './components/stock-exchange/stock-exchange.component';
 import {StockExchangeService} from './services/stock-exchange.service';
-import {HttpClientModule} from '@angular/common/http';
+import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatCardModule} from '@angular/material/card';
 import {MatDividerModule} from '@angular/material/divider';
@@ -32,6 +32,7 @@ import {MatIconModule} from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatDialogModule } from '@angular/material/dialog';
 import { CompanyEditDialogComponent } from './components/company/edit-dialog/edit-dialog.component';
+import { AuthInterceptorService } from './services/auth.interceptor.service';
 
 
 @NgModule({
@@ -66,7 +67,13 @@ import { CompanyEditDialogComponent } from './components/company/edit-dialog/edi
     MatTooltipModule,
     MatDialogModule
   ],
-  providers: [StockExchangeService, SectorService, CompanyService, StockService, UserService],
+  providers: [StockExchangeService, SectorService, CompanyService, StockService, UserService, 
+    {
+      provide : HTTP_INTERCEPTORS,
+      useClass: AuthInterceptorService,
+      multi   : true,
+    }
+  ],
   bootstrap: [AppComponent],
   entryComponents : [
     CompanyEditDialogComponent

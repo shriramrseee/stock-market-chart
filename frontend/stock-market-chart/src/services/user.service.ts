@@ -20,7 +20,7 @@ export class UserService {
   }
 
   loginUser(s: User): any {
-    return this.http.post(this.url + 'login', JSON.stringify(s), this.headers);
+    return this.http.post(this.url + 'authenticate', JSON.stringify(s), this.headers);
   }
 
   logoutUser(s: User): any {

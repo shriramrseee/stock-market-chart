@@ -8,7 +8,7 @@ import {Injectable} from '@angular/core';
 })
 export class CompanyService {
 
-  url = 'http://localhost:8081/company/';
+  url = 'http://localhost:8082/chart-service-core/company/';
   headers = {headers: new HttpHeaders({'Content-Type': 'application/json'})};
 
   constructor(private http: HttpClient) {

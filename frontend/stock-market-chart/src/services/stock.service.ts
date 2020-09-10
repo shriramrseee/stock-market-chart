@@ -9,7 +9,7 @@ import {StockFilter} from '../models/stock-filter';
 })
 export class StockService {
 
-  url = 'http://localhost:8081/stock/';
+  url = 'http://localhost:8082/chart-service-core/stock/';
   headers = { headers: new HttpHeaders({ 'Content-Type': 'application/json' })};
 
   constructor(private http: HttpClient) {
